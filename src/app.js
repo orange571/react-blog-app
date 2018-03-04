@@ -39,6 +39,7 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     if(/^\/view/.test(history.location.pathname)) {
+      store.dispatch(logout());
       renderApp();
     } else {
       store.dispatch(logout());

@@ -19,7 +19,7 @@ export class EditPostPage extends React.Component {
           <div className="content-container">
             <h1 className="page-header__title">Edit Post</h1>
             <div>Use the link below to share with others</div>
-            <a href="/view/{this.props.uid}/{this.props.match.params.id}">localhost:8080/view/{this.props.uid}/{this.props.match.params.id}</a>
+            <a href={"/view/"+ this.props.uid +"/"+ this.props.match.params.id}>localhost:8080/view/{this.props.uid}/{this.props.match.params.id}</a>
           </div>
         </div>
         <div className="content-container">
