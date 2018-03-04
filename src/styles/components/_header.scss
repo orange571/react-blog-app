@@ -16,3 +16,14 @@
     margin: 0;
   }
 }
+
+.header__username {
+  color: white;
+  padding-right: $s-size;
+}
+
+
+.header__right-nav {
+  display: flex;
+  align-items: center;
+}

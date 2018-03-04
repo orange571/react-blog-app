@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
+import { startSetPosts } from './actions/posts';
 import { login, logout } from './actions/auth';
+import getVisiblePosts from './selectors/posts';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -28,14 +30,20 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    store.dispatch(login(user.uid));
-    renderApp();
-    if (history.location.pathname === '/') {
-      history.push('/dashboard');
-    }
+    store.dispatch(login(user.uid, user.displayName));
+    store.dispatch(startSetPosts()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
+      }
+    });
   } else {
-    store.dispatch(logout());
-    renderApp();
-    history.push('/');
+    if(/^\/view/.test(history.location.pathname)) {
+      renderApp();
+    } else {
+      store.dispatch(logout());
+      renderApp();
+      history.push('/');
+    }
   }
 });
