@@ -9,6 +9,7 @@ export default class PostForm extends React.Component {
       title: props.post ? props.post.title : '',
       body: props.post ? props.post.body : '',
       createdAt: props.post ? moment(props.post.createdAt) : moment(),
+      author: props.post ? props.post.author: props.displayName,
       error: ''
     };
   }
@@ -30,7 +31,8 @@ export default class PostForm extends React.Component {
       this.props.onSubmit({
         title: this.state.title,
         createdAt: this.state.createdAt.valueOf(),
-        body: this.state.body
+        body: this.state.body,
+        author: this.state.author.valueOf(),
       });
     }
   };
@@ -53,8 +55,9 @@ export default class PostForm extends React.Component {
           onChange={this.onBodyChange}
         >
         </textarea>
-        <div>
-          <button className="button">Save Post</button>
+        <div className="form__button-container">
+          <button type="submit" className="button">Save Post</button>
+          {this.props.onRemove && (<button className="button button--secondary" onClick={this.props.onRemove}>Remove Post</button>)}
         </div>
       </form>
     )

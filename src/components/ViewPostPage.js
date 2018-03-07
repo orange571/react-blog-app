@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { startViewPost, setAsLoading } from '../actions/sharedPost';
 import LoadingPage from './LoadingPage';
+import Header from './Header';
 import { startLogin, startLogout } from '../actions/auth';
 
 export class ViewPostPage extends React.Component {
@@ -20,6 +21,11 @@ export class ViewPostPage extends React.Component {
 
   render() {
     const isLoading = this.props.post.isLoading;
+    const error = this.props.post.error;
+
+    if (error) {
+      return <p>Something went wrong: {error} </p>
+    }
 
     if (isLoading === "loading" || isLoading === "not started") {
       return <LoadingPage />;
@@ -27,41 +33,17 @@ export class ViewPostPage extends React.Component {
 
     return (
       <div>
-        <header className="header">
-          <div className="content-container">
-            <div className="header__content">
-              <Link className="header__title" to="/dashboard">
-                <h1>Blog</h1>
-              </Link>
-                {
-                  this.props.displayName ? (
-                    <div className="header__right-nav">
-                      <div className="header__username">Signed in as {this.props.displayName}</div>
-                      <button className="button button--link" onClick={this.props.startLogout}>Logout</button>
-                    </div>
-                  ) : (
-                    <div className="header__right-nav">
-                      <button className="button" onClick={this.props.startLogin}>Login</button>
-                    </div>
-                  )
-                }
-            </div>
-          </div>
-        </header>
-        <div className="page-header">
-          <div className="content-container">
-            <h1 className="page-header__title">Viewing Post</h1>
-          </div>
-        </div>
+        <Header />
         <div className="content-container">
-          <div className="view-post">
-            <div>
-              <h1>
-                Title:  {this.props.post.title}
-              </h1>
-              <p>
-                Body: {this.props.post.body}
-              </p>
+          <div>
+            <div className="view-post__header">
+              <h1 className="view-post__title">{this.props.post.title}</h1>
+              <h2 className="view-post__author">
+                Submitted by {this.props.post.author}
+              </h2>
+            </div>
+            <div className="view-post__content">
+              {this.props.post.body}
             </div>
           </div>
         </div>

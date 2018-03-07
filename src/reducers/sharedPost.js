@@ -1,6 +1,6 @@
 
 const sharedPostReducerDefaultState = {
-  isLoading : "not started"
+  isLoading : "not started",
 };
 
 export default (state = sharedPostReducerDefaultState, action) => {

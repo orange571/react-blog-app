@@ -18,6 +18,7 @@ export class AddPostPage extends React.Component {
         </div>
         <div className="content-container">
           <PostForm
+            displayName={this.props.displayName}
             onSubmit={this.onSubmit}
           />
         </div>
@@ -26,8 +27,15 @@ export class AddPostPage extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    displayName: state.auth.displayName
+  };
+};
+
+
 const mapDispatchToProps = (dispatch) => ({
   startAddPost: (post) => dispatch(startAddPost(post))
 });
 
-export default connect(undefined, mapDispatchToProps)(AddPostPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPostPage);

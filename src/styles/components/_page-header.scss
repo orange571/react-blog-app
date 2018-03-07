@@ -1,7 +1,9 @@
 .page-header {
-  background: $off-white;
+  background: $pale-blue;
   margin-bottom: $l-size;
   padding: $l-size 0;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.08);
+  text-align: center;
 }
 
 .page-header__actions {
@@ -10,8 +12,16 @@
 
 .page-header__title {
   font-weight: 300;
+  font-family: $noto-serif;
   margin: 0;
   span {
     font-weight: 700;
   }
+}
+
+
+.page-header__author {
+  font-size: $s-size;
+  color: $grey;
+  text-align: center;
 }
