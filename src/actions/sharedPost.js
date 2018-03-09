@@ -7,10 +7,12 @@ export const viewPost = (post) => ({
   post
 });
 
-export const startViewPost = function(uid, id) {
+export const startViewPost = function(id) {
   return (dispatch, getState) => {
-    return database.ref(`users/${uid}/posts/${id}`).once('value').then((snapshot) => {
+    console.log(id);
+    return database.ref(`posts/${id}`).once('value').then((snapshot) => {
       let post = snapshot.val();
+      console.log(snapshot.val());
       if(!post) {
         post = {error: "Unable to find post"};
       }

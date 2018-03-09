@@ -5,7 +5,6 @@ import moment from 'moment';
 import { startViewPost, setAsLoading } from '../actions/sharedPost';
 import LoadingPage from './LoadingPage';
 import Header from './Header';
-import { startLogin, startLogout } from '../actions/auth';
 
 export class ViewPostPage extends React.Component {
   constructor(props) {
@@ -14,9 +13,8 @@ export class ViewPostPage extends React.Component {
   componentDidMount() {
     this.props.setAsLoading();
     console.log(this.props);
-    const uid =  this.props.match.params.uid;
     const id =  this.props.match.params.id;
-    this.props.startViewPost(uid,id);
+    this.props.startViewPost(id);
   }
 
   render() {
@@ -42,9 +40,17 @@ export class ViewPostPage extends React.Component {
                 Submitted by {this.props.post.author}
               </h2>
             </div>
-            <div className="view-post__content">
-              {this.props.post.body}
-            </div>
+            {
+              this.props.post.body.length > 80 ? (
+                <div className="view-post__content">
+                  {this.props.post.body}
+                </div>
+              ) : (
+                <div className="view-post__content view-post__content-centered">
+                  {this.props.post.body}
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
@@ -60,9 +66,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  startLogout: () => dispatch(startLogout()),
-  startLogin: () => dispatch(startLogin()),
-  startViewPost: (uid,id) => dispatch(startViewPost(uid, id)),
+  startViewPost: (id) => dispatch(startViewPost(id)),
   setAsLoading: () => dispatch({
     type: 'IS_LOADING'
   })

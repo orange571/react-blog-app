@@ -1,15 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogin, startLogout } from '../actions/auth';
 
 export const Header = ({ startLogout, startLogin, displayName }) => (
   <header className="header">
-    <div className="content-container">
+    <div className=" content-container content-container--header">
       <div className="header__content">
-        <Link className="header__title" to="/dashboard">
-          <h1>Thought Collector</h1>
-        </Link>
+        <div className="header__left-nav">
+          <Link className="header__title" to="/dashboard">
+            <h1>Thought Collector</h1>
+          </Link>
+          {
+            displayName ? (
+              <div>
+                <NavLink to="/dashboard" className="header__link" activeClassName="is-active" exact={true}>Dashboard</NavLink>
+                <NavLink to="/public" className="header__link "activeClassName="is-active">Community Posts</NavLink>
+              </div>
+            ) : (
+              <Link className="header__link" to="/public">
+                Community Posts
+              </Link>
+            )
+          }
+        </div>
+
         {
           displayName ? (
             <div className="header__right-nav">
@@ -26,7 +41,6 @@ export const Header = ({ startLogout, startLogin, displayName }) => (
     </div>
   </header>
 );
-
 
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout()),

@@ -17,6 +17,7 @@
   text-decoration: none;
   h1 {
     margin: 0;
+    margin-right: $m-size;
     font-family: $just-another-hand;
     letter-spacing: 0.3rem;
     font-weight: normal;
@@ -30,7 +31,18 @@
 }
 
 
-.header__right-nav {
+.header__right-nav, .header__left-nav{
   display: flex;
   align-items: center;
+}
+
+
+.header__link {
+  color: lighten($blue, 32%);
+  padding: 0 0.8rem;
+  font-size: $font-size-large;
+  text-decoration: none;
+  &:hover {
+    color: white;
+  }
 }

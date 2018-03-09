@@ -19,6 +19,7 @@ export class AddPostPage extends React.Component {
         <div className="content-container">
           <PostForm
             displayName={this.props.displayName}
+            uid={this.props.uid}
             onSubmit={this.onSubmit}
           />
         </div>
@@ -29,7 +30,8 @@ export class AddPostPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    displayName: state.auth.displayName
+    displayName: state.auth.displayName,
+    uid: state.auth.uid
   };
 };
 
