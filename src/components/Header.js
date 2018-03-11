@@ -5,26 +5,28 @@ import { startLogin, startLogout } from '../actions/auth';
 
 export const Header = ({ startLogout, startLogin, displayName }) => (
   <header className="header">
-    <div className=" content-container content-container--header">
+    <div className="show-for-desktop content-container content-container--header">
       <div className="header__content">
-        <div className="header__left-nav">
-          <Link className="header__title" to="/dashboard">
-            <h1>Thought Collector</h1>
-          </Link>
           {
             displayName ? (
-              <div>
+              <div  className="header__left-nav">
+                <Link className="header__title" to="/dashboard">
+                  <h1>Thought Collector</h1>
+                </Link>
                 <NavLink to="/dashboard" className="header__link" activeClassName="is-active" exact={true}>Dashboard</NavLink>
-                <NavLink to="/public" className="header__link "activeClassName="is-active">Community Posts</NavLink>
+                <NavLink to="/public" className="header__link "activeClassName="is-active">Browse</NavLink>
               </div>
             ) : (
-              <Link className="header__link" to="/public">
-                Community Posts
-              </Link>
+              <div  className="header__left-nav">
+                <Link className="header__title" to="/dashboard">
+                  <h1>Thought Collector</h1>
+                </Link>
+                <Link className="header__link" to="/public">
+                  Browse
+                </Link>
+              </div>
             )
           }
-        </div>
-
         {
           displayName ? (
             <div className="header__right-nav">
@@ -38,6 +40,32 @@ export const Header = ({ startLogout, startLogin, displayName }) => (
           )
         }
       </div>
+    </div>
+    <div className="show-for-mobile">
+      <div  className="header_content--top">
+        <Link className="header__title" to="/dashboard">
+          <h1>Thought Collector</h1>
+        </Link>
+        {displayName && <div className="header__username">Signed in as {displayName}</div>}
+      </div>
+      {
+        displayName ? (
+          <div className="header_content--bottom">
+            <div className="content-container--bottom-nav">
+              <NavLink to="/dashboard" className="header__link" activeClassName="is-active" exact={true}>Dashboard</NavLink>
+              <NavLink to="/public" className="header__link "activeClassName="is-active">Browse</NavLink>
+              <button className="button button--link" onClick={startLogout}>Logout</button>
+            </div>
+          </div>
+        ) : (
+          <div className="header_content--bottom">
+            <div className="content-container--bottom-nav">
+              <Link className="header__link" to="/public">Browse</Link>
+              <button className="button button--link" onClick={startLogin}>Login</button>
+            </div>
+          </div>
+        )
+      }
     </div>
   </header>
 );

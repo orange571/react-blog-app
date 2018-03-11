@@ -4,7 +4,46 @@
   max-width: 80rem;
 }
 
+.content-container--format-buttons {
+  margin-top: $l-size;
+  padding-right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content-container--public-posts {
+  margin-top: $m-size;
+  padding: 0 $s-size;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.content-container--public-posts.grid:after {
+  content: "";
+  flex: 0 1 32%;
+  max-width: 32%;
+}
+
+.content-container--public-posts.grid .list-item{
+  flex: 0 1 32%;
+  max-width: 32%;
+}
+
+.content-container--public-posts.row .list-item{
+  flex: 0 1 100%;
+  max-width: inherit;
+}
+
 
 .content-container--header {
   max-width: 140rem;
+}
+
+.content-container--bottom-nav {
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
 }

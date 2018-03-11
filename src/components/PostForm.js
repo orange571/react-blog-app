@@ -81,7 +81,7 @@ export default class PostForm extends React.Component {
         </textarea>
         <div>
           <input type="checkbox" id="toggle-public-input" name="isReadable" checked={this.state.isReadable} onChange={this.toggleIsReadable}/>
-          <label htmlFor="toggle-public-input">Make Public?</label>
+          <label htmlFor="toggle-public-input"> Make Public? Your Google display name will be associated with this post.</label>
         </div>
         <div className="form__button-container">
           <button type="submit" className="button">Save Post</button>

@@ -21,10 +21,11 @@ export const startAddPost = (postData = {}) => {
 
     return database.ref(`posts`).push(post).then((ref) => {
       const postId = ref.key;
-      database.ref(`users/${uid}/posts`).update({[postId] : isReadable});
-      if(isReadable){
-        database.ref(`isPublic`).push({id: postId})
-      };
+      database.ref(`users/${uid}/posts`).update({[postId] : isReadable}).then(()=>{
+        if(isReadable){
+          database.ref(`isPublic`).push({id: postId})
+        };
+      });
       dispatch(addPost({
         id: ref.key,
         ...post

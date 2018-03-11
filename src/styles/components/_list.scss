@@ -34,6 +34,17 @@
   }
 }
 
+.list-item--public {
+  margin: $s-size 0;
+  border-top: 1px solid darken($off-white, 7%);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  width: 100%
+}
+
+.list-item--public div{
+  width: 100%;
+}
+
 .list-item--message {
   align-items: center;
   color: $grey;
@@ -46,7 +57,14 @@
 
 .list-item__title, .list-item__body {
   margin: 0;
-  word-break: break-all;
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-item__title--private {
+  max-width: 85%;
 }
 
 .list-item__sub-title {

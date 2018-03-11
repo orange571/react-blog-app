@@ -18,3 +18,19 @@
   background-color: inherit;
   color: $blue;
 }
+
+.button--format {
+  font-size: 2.5rem;
+  margin-left: $s-size;
+  background-color: inherit;
+  padding: 0.6rem;
+  color: $grey;
+  border: none;
+  outline: none;
+  &:hover{
+    color: $blue;
+  }
+  &.active{
+    color: $blue;
+  }
+}

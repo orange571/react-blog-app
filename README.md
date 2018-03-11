@@ -1,8 +1,7 @@
 # react-blog-app
 
-TODO -
-Show author in sharedPost view --DONE,
-Styles,
+Possible Improvements:
+Admin role to remove inappropriate posts,
 Error handling for firebase requests,
-update read/write rules in firebase,
-implement quill rich text editor
+implement quill rich text editor,
+tests

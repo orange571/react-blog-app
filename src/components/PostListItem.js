@@ -5,9 +5,7 @@ import numeral from 'numeral';
 
 const PostListItem = ({ id, title, body, createdAt }) => (
   <Link className="list-item" to={`/edit/${id}`}>
-    <div>
-      <h3 className="list-item__title">{title}</h3>
-    </div>
+    <h3 className="list-item__title list-item__title--private">{title}</h3>
     <h3 className="list-item__data">{moment(createdAt).format('M/D/YY')}</h3>
   </Link>
 );
