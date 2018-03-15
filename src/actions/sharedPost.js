@@ -1,4 +1,4 @@
-import database from '../firebase/firebase';
+//import database from '../firebase/firebase';
 
 
 // VIEW_POST
