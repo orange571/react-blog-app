@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import LoadingPage from './LoadingPage';
 import PublicPostsList from './PublicPostsList';
-//import database from '../firebase/firebase';
+import database from '../firebase/firebase';
 
 class ViewPublicPostsPage extends React.Component {
   constructor (props) {
