@@ -3,8 +3,6 @@ import Header from './Header';
 import LoadingPage from './LoadingPage';
 import PublicPostsList from './PublicPostsList';
 import database from '../firebase/firebase';
-//import PostListFilters from './PostListFilters';
-//import PostsSummary from './PostsSummary';
 
 class ViewPublicPostsPage extends React.Component {
   constructor (props) {
@@ -27,20 +25,16 @@ class ViewPublicPostsPage extends React.Component {
       snapshot.forEach((childSnapshot)=>{
         postIds.push(childSnapshot.val().id);
       });
-      console.log(postIds);
-      console.log(snapshot.val());
       const posts = [];
       if(postIds.length > 0) {
         postIds.forEach((postId, index)=>{
-          console.log(postId, index);
           database.ref(`posts/${postId}`).once('value').then((postSnapshot) => {
             posts.push({
               id: postSnapshot.key,
               ...postSnapshot.val()
             });
-            console.log(index);
-            console.log(postIds.length-1);
             if (index === postIds.length-1) {
+              posts.sort((a,b)=> a.createdAt < b.createdAt ? 1 : -1);
               this.setState((prevState) => ({
                 ...prevState,
                 isLoading:false,
@@ -49,6 +43,11 @@ class ViewPublicPostsPage extends React.Component {
             }
           });
         });
+      } else {
+        this.setState((prevState) => ({
+          ...prevState,
+          isLoading:false,
+        }))
       }
 
     }).catch(error => this.setState((prevState) => ({

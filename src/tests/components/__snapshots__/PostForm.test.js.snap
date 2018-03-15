@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PostForm correctly 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value=""
+  />
+  <textarea
+    className="textarea"
+    onChange={[Function]}
+    placeholder="Add a body for your post"
+    value=""
+  />
+  <div>
+    <input
+      checked={false}
+      id="toggle-public-input"
+      name="isReadable"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="toggle-public-input"
+    >
+       Make Public? Your Google display name will be associated with this post.
+    </label>
+  </div>
+  <div
+    className="form__button-container"
+  >
+    <button
+      className="button save"
+      type="submit"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should render PostForm correctly with post data 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value="Rent"
+  />
+  <textarea
+    className="textarea"
+    onChange={[Function]}
+    placeholder="Add a body for your post"
+    value="Rent is expensive"
+  />
+  <div>
+    <input
+      checked={true}
+      id="toggle-public-input"
+      name="isReadable"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="toggle-public-input"
+    >
+       Make Public? Your Google display name will be associated with this post.
+    </label>
+  </div>
+  <div
+    className="form__button-container"
+  >
+    <button
+      className="button save"
+      type="submit"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should render error for invalid form submission 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value=""
+  />
+  <textarea
+    className="textarea"
+    onChange={[Function]}
+    placeholder="Add a body for your post"
+    value=""
+  />
+  <div>
+    <input
+      checked={false}
+      id="toggle-public-input"
+      name="isReadable"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="toggle-public-input"
+    >
+       Make Public? Your Google display name will be associated with this post.
+    </label>
+  </div>
+  <div
+    className="form__button-container"
+  >
+    <button
+      className="button save"
+      type="submit"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should render error for invalid form submission 2`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <p
+    className="form__error"
+  >
+    Please provide a title and post body.
+  </p>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value=""
+  />
+  <textarea
+    className="textarea"
+    onChange={[Function]}
+    placeholder="Add a body for your post"
+    value=""
+  />
+  <div>
+    <input
+      checked={false}
+      id="toggle-public-input"
+      name="isReadable"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      htmlFor="toggle-public-input"
+    >
+       Make Public? Your Google display name will be associated with this post.
+    </label>
+  </div>
+  <div
+    className="form__button-container"
+  >
+    <button
+      className="button save"
+      type="submit"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;

@@ -41,7 +41,9 @@ export default class PostForm extends React.Component {
     this.setState({
       isReadable: e.target.checked,
     });
-    this.props.displayLink(e.target.checked);
+    if(this.props.displayLink) {
+      this.props.displayLink(e.target.checked);
+    }
   }
   onSubmit = (e) => {
     e.preventDefault();
@@ -84,8 +86,8 @@ export default class PostForm extends React.Component {
           <label htmlFor="toggle-public-input"> Make Public? Your Google display name will be associated with this post.</label>
         </div>
         <div className="form__button-container">
-          <button type="submit" className="button">Save Post</button>
-          {this.props.onRemove && (<button className="button button--secondary" onClick={this.props.onRemove}>Remove Post</button>)}
+          <button type="submit" className="button save">Save Post</button>
+          {this.props.onRemove && (<button className="button button--secondary remove" onClick={this.props.onRemove}>Remove Post</button>)}
         </div>
       </form>
     )

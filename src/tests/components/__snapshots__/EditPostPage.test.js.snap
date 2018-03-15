@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EditPostPage 1`] = `
+<div>
+  <div
+    className="page-header"
+  >
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Edit Post
+      </h1>
+      <div
+        id="link-container"
+      >
+        <div>
+          Get a link to share your post with others
+        </div>
+        <div>
+          when you check "Make Public"
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <PostForm
+      displayLink={[Function]}
+      onRemove={[Function]}
+      onSubmit={[Function]}
+      post={
+        Object {
+          "author": "thisismytestname",
+          "body": "Credit cards are thin",
+          "createdAt": 345600000,
+          "id": "3",
+          "isReadable": false,
+          "title": "Credit Card",
+          "uid": "thisismytestuid",
+        }
+      }
+    />
+  </div>
+</div>
+`;

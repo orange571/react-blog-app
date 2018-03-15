@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow} from 'enzyme';
 import { Header } from '../../components/Header';
 
 test('should render Header correctly', () => {
@@ -9,7 +9,7 @@ test('should render Header correctly', () => {
 
 test('should call startLogout on button click', () => {
   const startLogout = jest.fn();
-  const wrapper = shallow(<Header startLogout={startLogout} />);
-  wrapper.find('button').simulate('click');
+  const wrapper = shallow(<Header startLogout={startLogout} displayName='bob'/>);
+  wrapper.find('.show-for-desktop .logout').simulate('click');
   expect(startLogout).toHaveBeenCalled();
 });

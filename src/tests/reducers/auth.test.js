@@ -7,6 +7,7 @@ test('should set uid for login', () => {
   };
   const state = authReducer({}, action);
   expect(state.uid).toBe(action.uid);
+  expect(state.displayName).toBe(action.displayName);
 });
 
 test('should clear uid for logout', () => {

@@ -5,10 +5,47 @@ exports[`should render Header correctly 1`] = `
   className="header"
 >
   <div
-    className="content-container"
+    className="show-for-desktop content-container content-container--header"
   >
     <div
       className="header__content"
+    >
+      <div
+        className="header__left-nav"
+      >
+        <Link
+          className="header__title"
+          replace={false}
+          to="/dashboard"
+        >
+          <h1>
+            Thought Collector
+          </h1>
+        </Link>
+        <Link
+          className="header__link"
+          replace={false}
+          to="/public"
+        >
+          Browse
+        </Link>
+      </div>
+      <div
+        className="header__right-nav"
+      >
+        <button
+          className="button login"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="show-for-mobile"
+  >
+    <div
+      className="header_content--top"
     >
       <Link
         className="header__title"
@@ -16,15 +53,29 @@ exports[`should render Header correctly 1`] = `
         to="/dashboard"
       >
         <h1>
-          Boilerplate
+          Thought Collector
         </h1>
       </Link>
-      <button
-        className="button button--link"
-        onClick={[Function]}
+    </div>
+    <div
+      className="header_content--bottom"
+    >
+      <div
+        className="content-container--bottom-nav"
       >
-        Logout
-      </button>
+        <Link
+          className="header__link"
+          replace={false}
+          to="/public"
+        >
+          Browse
+        </Link>
+        <button
+          className="button button--link login"
+        >
+          Login
+        </button>
+      </div>
     </div>
   </div>
 </header>

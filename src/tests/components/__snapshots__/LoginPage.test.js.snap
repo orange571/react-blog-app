@@ -10,10 +10,10 @@ exports[`should correctly render LoginPage 1`] = `
     <h1
       className="box-layout__title"
     >
-      Boilerplate
+      Thought Collector
     </h1>
     <p>
-      Tag line for app.
+      Write your thoughts here
     </p>
     <button
       className="button"

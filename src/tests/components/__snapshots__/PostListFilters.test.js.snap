@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PostListFilters correctly 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="input-group"
+  >
+    <div
+      className="input-group__left"
+    >
+      <div
+        className="input-group__item"
+      >
+        <input
+          className="text-input"
+          onChange={[Function]}
+          placeholder="Search posts"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="input-group__item"
+      >
+        <select
+          className="select"
+          onChange={[Function]}
+          value="date"
+        >
+          <option
+            value="title"
+          >
+            Title
+          </option>
+          <option
+            value="date"
+          >
+            By Date
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="input-group__item"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Post
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render PostListFilters with alt data correctly 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="input-group"
+  >
+    <div
+      className="input-group__left"
+    >
+      <div
+        className="input-group__item"
+      >
+        <input
+          className="text-input"
+          onChange={[Function]}
+          placeholder="Search posts"
+          type="text"
+          value="Credit"
+        />
+      </div>
+      <div
+        className="input-group__item"
+      >
+        <select
+          className="select"
+          onChange={[Function]}
+          value="title"
+        >
+          <option
+            value="title"
+          >
+            Title
+          </option>
+          <option
+            value="date"
+          >
+            By Date
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="input-group__item"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Post
+      </Link>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PostList with empty message 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Posts
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Post
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Created At
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No posts
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render PostList with posts 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Posts
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Post
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Created At
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <PostListItem
+      author="thisismytestname"
+      body="Gum is rubbery"
+      createdAt={0}
+      id="1"
+      isReadable={false}
+      key="1"
+      title="Gum"
+      uid="thisismytestuid"
+    />
+    <PostListItem
+      author="thisismytestname"
+      body="Rent is expensive"
+      createdAt={-345600000}
+      id="2"
+      isReadable={true}
+      key="2"
+      title="Rent"
+      uid="thisismytestuid"
+    />
+    <PostListItem
+      author="thisismytestname"
+      body="Credit cards are thin"
+      createdAt={345600000}
+      id="3"
+      isReadable={false}
+      key="3"
+      title="Credit Card"
+      uid="thisismytestuid"
+    />
+  </div>
+</div>
+`;

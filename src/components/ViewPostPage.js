@@ -12,7 +12,6 @@ export class ViewPostPage extends React.Component {
   }
   componentDidMount() {
     this.props.setAsLoading();
-    console.log(this.props);
     const id =  this.props.match.params.id;
     this.props.startViewPost(id);
   }

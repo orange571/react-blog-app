@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PublicPostList with posts 1`] = `
+<div>
+  <div
+    className="content-container content-container--format-buttons show-for-desktop"
+  >
+    <button
+      className="button--format false"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-th"
+      />
+    </button>
+    <button
+      className="button--format active"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-th-list"
+      />
+    </button>
+  </div>
+  <div
+    className="content-container content-container--public-posts row"
+  >
+    <PublicPostListItem
+      author="thisismytestname"
+      body="Gum is rubbery"
+      createdAt={0}
+      id="1"
+      isReadable={false}
+      key="1"
+      title="Gum"
+      uid="thisismytestuid"
+    />
+    <PublicPostListItem
+      author="thisismytestname"
+      body="Rent is expensive"
+      createdAt={-345600000}
+      id="2"
+      isReadable={true}
+      key="2"
+      title="Rent"
+      uid="thisismytestuid"
+    />
+    <PublicPostListItem
+      author="thisismytestname"
+      body="Credit cards are thin"
+      createdAt={345600000}
+      id="3"
+      isReadable={false}
+      key="3"
+      title="Credit Card"
+      uid="thisismytestuid"
+    />
+  </div>
+</div>
+`;

@@ -1,5 +1,6 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import moment from 'moment'
 
 // ADD_POST
 export const addPost = (post) => ({
@@ -46,14 +47,12 @@ export const startRemovePost = ({ id } = {}) => {
     return database.ref(`posts/${id}`).remove().then(() => {
       //REMOVE FROM PUBLIC LIST IF WAS THERE BEFORE
       database.ref(`isPublic`).orderByChild("id").equalTo(id).once("value",snapshot => {
-        console.log("found id, will try code to remove")
           const wasPublic = snapshot.val();
-          const publicPostId = Object.keys(wasPublic)[0];
-          console.log(publicPostId);
-          console.log(snapshot.val());
           if (!!wasPublic){
-            database.ref(`isPublic/${publicPostId}`).remove();
-            console.log("tried code to remove")
+            const publicPostId = Object.keys(wasPublic)[0];
+            database.ref(`isPublic/${publicPostId}`).remove().then(() => {
+              console.log("success remove");
+            }).catch(error => console.log(error));
           }
       });
       //REMOVE FROM USER List
@@ -85,14 +84,10 @@ export const startEditPost = (id, updates) => {
         //REMOVE FROM PUBLIC LIST IF WAS THERE BEFORE
       } else {
         database.ref(`isPublic`).orderByChild("id").equalTo(id).once("value",snapshot => {
-          console.log("found id, will try code to remove")
             const wasPublic = snapshot.val();
             const publicPostId = Object.keys(wasPublic)[0];
-            console.log(publicPostId);
-            console.log(snapshot.val());
             if (!!wasPublic){
               database.ref(`isPublic/${publicPostId}`).remove();
-              console.log("tried code to remove")
             }
         });
       }
@@ -112,27 +107,38 @@ export const startSetPosts = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     return database.ref(`users/${uid}/posts`).once('value').then((snapshot) => {
-      const postIds = snapshot.val() ? Object.getOwnPropertyNames(snapshot.val()) : [];
-      console.log(postIds);
-      console.log(snapshot.val());
-      let posts = [];
-      if(postIds.length > 0) {
-        postIds.forEach((postId, index)=>{
-          console.log(postId, index);
-          database.ref(`posts/${postId}`).once('value').then((postSnapshot) => {
-            posts.push({
-              id: postSnapshot.key,
-              ...postSnapshot.val()
-            });
-            console.log(index);
-            console.log(postIds.length-1);
-            if (index === postIds.length-1) {
-
-              dispatch(setPosts(posts));
-            }
+      if(!snapshot.val()) {
+        let posts = [];
+        dispatch(setPosts(posts));
+      } else {
+        return new Promise((resolve, reject) => {
+          const postIds = [];
+          snapshot.forEach((childSnapshot) => {
+            postIds.push(childSnapshot.key);
           });
+          let posts = [];
+          postIds.forEach((postId, index)=>{
+            database.ref(`posts/${postId}`).once('value').then((postSnapshot) => {
+              posts.push({
+                id: postSnapshot.key,
+                ...postSnapshot.val()
+              });
+              if (index === postIds.length-1) {
+                resolve(posts);
+              }
+            }).catch((error) => {
+              console.log("error", error);
+              reject(error);
+            });
+          });
+        }).then((posts)=>{
+          dispatch(setPosts(posts));
+        }).catch(error => {
+          console.log(error)
         });
       }
+    }).catch((error)=>{
+      console.log('error', error);
     });
   };
 };

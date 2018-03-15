@@ -1,0 +1,55 @@
+
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users":{
+        "$user_id": {
+          ".write":"$user_id === auth.uid",
+          ".read":"$user_id === auth.uid",
+          "posts": {
+            	"$post_id":{
+                ".validate":"newData.isBoolean()"
+              }
+          }
+        }
+     },
+     "isPublic":{
+       ".read":true,
+      	".indexOn": "id",
+       "$public_post_id":{
+         ".write": "data.exists() ? root.child('users').child(auth.uid).child('posts').child(data.child('id').val()).exists() : root.child('users').child(auth.uid).child('posts').child(newData.child('id').val()).exists()",
+         ".validate":"newData.hasChildren(['id'])",
+         "id": {
+           ".validate":"newData.isString()"
+         }
+       }
+     },
+     "posts":{
+        "$post_id":{
+         	".read": "data.child('isReadable').val() === true || root.child('users').child(auth.uid).child('posts').child($post_id).exists()",
+          ".write": "!root.child('posts').child($post_id).exists() || root.child('users').child(auth.uid).child('posts').hasChild($post_id)",
+          ".validate": "newData.hasChildren(['title','author','createdAt','body', 'uid'])",
+          "title": {
+            ".validate":"newData.isString() && newData.val().length > 0"
+          },
+          "author" : {
+            ".validate":"newData.isString()" },
+          "uid" : {
+            ".validate":"newData.isString()" },
+          "createdAt": {
+            ".validate":"newData.isNumber()",
+          },
+          "body": {
+            ".validate":"newData.isString() && newData.val().length > 0"
+          },
+          "isReadable": {
+            ".validate":"newData.isBoolean()"
+          },
+          "$other" : {
+            ".validate":false
+          }
+        }
+    }
+  }
+}

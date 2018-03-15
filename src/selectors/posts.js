@@ -11,8 +11,6 @@ export default (posts, { text, sortBy }) => {
   }).sort((a, b) => {
     if (sortBy === 'date') {
       return a.createdAt < b.createdAt ? 1 : -1;
-    } else if (sortBy === 'amount') {
-      return a.amount < b.amount ? 1 : -1;
     } else if (sortBy === 'title') {
       return a.title.localeCompare(b.title);
     }
