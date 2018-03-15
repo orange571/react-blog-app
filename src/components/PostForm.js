@@ -87,7 +87,7 @@ export default class PostForm extends React.Component {
         </div>
         <div className="form__button-container">
           <button type="submit" className="button save">Save Post</button>
-          {this.props.onRemove && (<button className="button button--secondary remove" onClick={this.props.onRemove}>Remove Post</button>)}
+          {this.props.onRemove && (<button type="button" className="button button--secondary remove" onClick={this.props.onRemove}>Remove Post</button>)}
         </div>
       </form>
     )

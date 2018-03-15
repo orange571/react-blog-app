@@ -48,15 +48,17 @@ export const startRemovePost = ({ id } = {}) => {
       //REMOVE FROM PUBLIC LIST IF WAS THERE BEFORE
       database.ref(`isPublic`).orderByChild("id").equalTo(id).once("value",snapshot => {
           const wasPublic = snapshot.val();
+          const publicPostId = Object.keys(wasPublic)[0];
           if (!!wasPublic){
-            const publicPostId = Object.keys(wasPublic)[0];
             database.ref(`isPublic/${publicPostId}`).remove().then(() => {
-              console.log("success remove");
+              //REMOVE FROM USER List
+              database.ref(`users/${uid}/posts/${id}`).remove();
             }).catch(error => console.log(error));
+          } else {
+            //REMOVE FROM USER List
+            database.ref(`users/${uid}/posts/${id}`).remove();
           }
       });
-      //REMOVE FROM USER List
-      database.ref(`users/${uid}/posts/${id}`).remove();
       dispatch(removePost({ id }));
     });
   };

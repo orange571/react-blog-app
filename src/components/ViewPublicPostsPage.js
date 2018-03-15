@@ -41,6 +41,21 @@ class ViewPublicPostsPage extends React.Component {
                 posts
               }))
             }
+          }).catch(error => {
+            console.log(error);
+            posts.push({
+              id: postId,
+              title: "error fetching post",
+              body: postId
+            });
+            if (index === postIds.length-1) {
+              posts.sort((a,b)=> a.createdAt < b.createdAt ? 1 : -1);
+              this.setState((prevState) => ({
+                ...prevState,
+                isLoading:false,
+                posts
+              }))
+            }
           });
         });
       } else {
