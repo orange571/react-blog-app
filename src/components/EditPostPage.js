@@ -31,7 +31,7 @@ export class EditPostPage extends React.Component {
             {this.state.isReadable ? (
                 <div id="link-container">
                   <div>Use the link below to share with others</div>
-                  <a href={"/view/"+ this.props.match.params.id}>/view/{this.props.match.params.id}</a>
+                  <a href={"/view/"+ this.props.match.params.id} target="_blank">https://thought-collector-app.herokuapp.com/view/{this.props.match.params.id}</a>
                 </div>
               ) : (
                 <div id="link-container">
