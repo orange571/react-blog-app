@@ -13,7 +13,7 @@ Features:
 
 ## Background And Learning Process
 
-This project was primarily an exercise in using React, Redux, Webpack, and Firebase after having taken a React course. While basic operations such as creating, viewing, updating, and deleting posts were covered in the course, creating the distinction between public and private posts was a new challenge. I found that I had to reorganize how my Firebase database was structured and how to write more complex security rules for reading and writing data to the database.
+This project was primarily an exercise in using React, Redux, Webpack, and Firebase after having taken a React course. While basic operations such as creating, viewing, updating, and deleting posts were covered in the course, creating the distinction between public and private posts was a new challenge. I found that I had to reorganize how my Firebase database was structured and learn how to write more complex security rules for reading and writing data to the database.
 
 ## Possible Improvements
 * Admin role to remove inappropriate posts
